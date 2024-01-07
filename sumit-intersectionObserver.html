@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sumit Intersection Obserber</title>
+    <style>
+      /* div {
+        width: 100vh;
+        height: 100vh;
+        margin: 0 auto;
+      }
+      #circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: black;
+        margin: 0 auto;
+        border: 1px solid green;
+        overflow: hidden;
+      } */
+      div {
+        width: 200px;
+        height: 200px;
+        border-radius: 10%;
+        background-color: green;
+        border: 3px solid pink;
+        transition: all 0.9s ease-in-out;
+        transform: scale(1.2);
+        opacity: 0;
+        margin: 0 auto 50px auto;
+      }
+      .visible {
+        transform: scale(1);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <!-- jsvascript script -->
+    <script>
+      const squares = document.querySelectorAll("div");
+      const observer = new IntersectionObserver(
+        (squares) => {
+          squares.forEach((squar) => {
+            if (squar.isIntersecting) {
+              //   console.log(`${item.target} is visible`);
+              squar.target.classList.add("visible");
+            } else {
+              //   console.log(`${item.target} is not visible`);
+              squar.target.classList.remove("visible");
+            }
+          });
+        }
+        // {
+        //   threshold: 0.5,
+        // }
+      );
+      squares.forEach((squar) => observer.observe(squar));
+
+      //   observer.observe(circle);
+    </script>
+  </body>
+</html>
